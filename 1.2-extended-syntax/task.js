@@ -18,29 +18,32 @@ function getResult(a,b,c){
 
 function getAverageMark(marks){
     
-    let sumOfMark =0;
-    let len = marks.length;
+    let sumOfMark = 0;
 
-    if (len == 0) {
+    if (marks.length == 0) {
         return 0;
-    } else if (len > 5) {
-        return "Количество оценок больше 5. Учитываются первые 5"
-    }
+    } else if (marks.length > 5) {
+        marks.splice(5);
+        console.log("Количество оценок больше 5. Учитываются первые 5");
+    } 
+
+    for (let i = 0; i < marks.length; i++){
+        sumOfMark += marks[i];
     
-    marks.splice(5);
-
-    for (let i = 0; i < len; i++){
-       sumOfMark += marks[i];
-       let averageMark =  sumOfMark / len;
-
-       return averageMark;
     }
+       
+    return sumOfMark / marks.length;
 
 }
 
 function askDrink(name,dateOfBirthday){
     
+let userAge = new Date().getFullYear() - dateOfBirthday.getFullYear();
     
+if (userAge < 18) {
+    return `Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`;
+} else {
+    return `Не желаете ли олд-фэшн, ${name}?`;
+}
     
-    return result;
 }
