@@ -1,6 +1,9 @@
 function calculateTotalMortgage(percent, contribution, amount, date) {
     "use strict"; 
-   
+    if (isNaN(+percent)) {
+        return `Параметр <Процентная ставка> содержит неправильное значение <${percent}>`;
+        }
+
     //console.log(typeof percent);
     //console.log(typeof contribution);
     //console.log(typeof amount);
@@ -18,12 +21,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 }
 
 function getGreeting(name) {
-
-    if (name == "" || name == null || name == undefined) {
-        greeting = 'Привет, мир! Меня зовут Аноним','.';
-    } else {
-        greeting = `Привет, мир! Меня зовут ${name}`,`.`;
-    }
-
-     return greeting;
+    
+    return (`Привет, мир! Меня зовут ${name || "Аноним"}`);
 }
