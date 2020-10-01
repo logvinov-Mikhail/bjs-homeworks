@@ -106,3 +106,4 @@ getAverageScore({
     // console.log(name)
     return name;
   }
+ console.log('Люблю Настеньку!');
