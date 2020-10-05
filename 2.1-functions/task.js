@@ -15,7 +15,7 @@ function getSolutions(a, b, c) {
   }
 }
 
-//getSolutions(2, 4, 2);
+getSolutions(2, 4, 2);
 
 function showSolutionsMessage(a, b, c) {
   let result = getSolutions(5, 64, 62);
