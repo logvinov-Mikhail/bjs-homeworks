@@ -6,11 +6,11 @@ function getSolutions(a, b, c) {
   if (D < 0) {
     return { D: D, roots: [] };
   } else if (D == 0) {
-    let x1 = -b / 2 * a;
+    let x1 = -b / (2 * a);
     return { D: D, roots: [x1] };
   } else if (D > 0){
-    let x1 = (-b + Math.sqrt(D)) / 2 * a;
-    let x2 = (-b - Math.sqrt(D)) / 2 * a;
+    let x1 = (-b + Math.sqrt(D)) / (2 * a);
+    let x2 = (-b - Math.sqrt(D)) / (2 * a);
     return { D: D, roots: [x1, x2]};
   }
 }
@@ -18,7 +18,7 @@ function getSolutions(a, b, c) {
 getSolutions(2, 4, 2);
 
 function showSolutionsMessage(a, b, c) {
-  let result = getSolutions(5, 64, 62);
+  let result = getSolutions(a, b, c);
   // console.log(result.roots)
   console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}`);
   console.log(`Значение дискриминанта:  ${result.D}`);
@@ -81,20 +81,18 @@ getAverageScore({
 //  Задача 3
 
   function getPersonData(secretData) {
-  // console.log(secretData)
-  let secret007 = {};
-  for ( let key in secretData) {
-    secret007[key] = getDecodedValue(secretData[key]); 
+  return {
+    firstName: getDecodedValue(secretData['aaa']),
+    lastName: getDecodedValue(secretData['bbb'])
   }
-  console.log(secret007)
-  return secret007
   }
-
-  getPersonData({
+  
+  let banditName =  getPersonData({
     aaa: 0,
     bbb: 1
-  })
-  
+  });
+  console.log(banditName);
+
   function getDecodedValue(secret) {
     // console.log(secret)
     let name; 
@@ -106,4 +104,3 @@ getAverageScore({
     // console.log(name)
     return name;
   }
-  
