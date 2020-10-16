@@ -81,6 +81,8 @@ getAverageScore({
 //  Задача 3
 
   function getPersonData(secretData) {
+  //console.log(getDecodedValue(secretData['aaa']))
+  //console.log((secretData['aaa']))
   return {
     firstName: getDecodedValue(secretData['aaa']),
     lastName: getDecodedValue(secretData['bbb'])
