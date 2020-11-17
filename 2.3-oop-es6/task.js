@@ -105,28 +105,26 @@ class Library {
     }
 
     findBookBy(type, value) {
-        this.books.forEach(function(element, i, array) {
-            //console.log(element[type]);
 
-            if(element[type] == value) {
-                return element;
-            } else {
-                return null;
-            }  
-        });
-               
+        for (let search of this.books) {
+            if (search[type] == value) {
+                return search;
+            }    
+        }
+        return null    
     }
 
     giveBookByName(bookName) {
-        this.books.forEach(function(element, i, array) {
-            //console.log(element.name); 
-            if(element.name == bookName) {
-                return array.splice([i], 1);
-            } else {
-                return null;
-            }
-        });
 
+        let founded = null;
+
+        this.books.forEach(function(element, i, array) {
+            if(element.name == bookName) {
+                founded = element;
+                array.splice([i], 1); 
+            } 
+        });
+        return console.log(founded);
     }
 }
 
@@ -147,7 +145,7 @@ console.log("Количество книг после выдачи: " + library.
 
 
 //Задача №3 
-/*
+
 class StudentLog {
     constructor(name) {
         this.name = name;
@@ -156,7 +154,14 @@ class StudentLog {
     getName() {
         return this.name; 
     }
+                // Создайте метод addGrade(grade, subject), который будет вносить оценку по соответствующему предмету. При этом grade — оценка, subject — предмет. Условия работы метода:
+                // Метод возвращает количество поставленных оценок по данному предмету.
+                // Оценка ставится числом в пределах от 1 до 5.
+                // При неверной оценке дополнительно выдаётся сообщение с ошибкой, оценка в журнал не заносится. Текущее количество оценок все равно требуется вернуть.
+                // const log = new StudentLog('Олег Никифоров');
 
+                // console.log(log.addGrade(3, 'algebra'));
+                // // 1
     addGrade(grade, subject) {
         this.subject = subject;
         this.grade = [];
@@ -178,7 +183,6 @@ console.log(log.addGrade(3, 'algebra'));
 console.log(log.addGrade(5, 'algebra'));
 console.log(log.addGrade(5, 'maz'));
 console.log(log);
-*/
 
 
 
