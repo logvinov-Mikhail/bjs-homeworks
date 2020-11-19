@@ -1,22 +1,20 @@
 // Задача №1 
 
 function parseCount(result) {
-    if (isNaN(Number.parseInt(result))) {
-        const numberError = new Error("Невалидное значение");
-        throw numberError;  
+    let resultParse = Number.parseInt(result);
+    if (isNaN(resultParse)) {
+        throw numberError = new Error("Невалидное значение");
     } else {
-        return Number.parseInt(result);
+        return resultParse;
     }
 }
 
 function validateCount(count) {
     try {
-        parseCount(count);  
+        return parseCount(count);  
     } catch(e) {
-        const numberError = new Error("Невалидное значение");
-        throw numberError; 
-    }   
-    return parseCount(count);   
+        return numberError; 
+    }      
 }
 
 // Задача №2 
@@ -27,41 +25,31 @@ class Triangle {
         this.b = b;
         this.c = c;
 
-        try {
-            if ((a + b) < c || (a + c) < b || (b + c) < a) {
-                
-                const trError = new Error("Треугольник с такими сторонами не существует");
-                throw trError;
-            } 
-        } catch(e) {
-            console.log("ошибку перехватил");  
-        } 
+        if ((a + b) < c || (a + c) < b || (b + c) < a) { 
+            throw triangleError = new Error("Треугольник с такими сторонами не существует");
+        }
     }
-    
+
     getPerimeter() {
         return (this.a + this.b + this.c);
     }
 
     getArea() {
-        const p = (this.a + this.b + this.c)*0.5; //Вычисление полупериметра
-        const s = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)); //Вычисление площади
-        return s.toFixed(3);
+        const pP = this.getPerimeter() * 0.5; //Вычисление полупериметра
+        const s = Math.sqrt(pP * (pP - this.a) * (pP - this.b) * (pP - this.c)); //Вычисление площади
+        return parseInt(s.toFixed(3));
     }
 }
 
-const test = new Triangle(3, 2, 4);
+const test = new Triangle(10, 12, 100);
 console.log(test);
 console.log(test.getPerimeter());
 console.log(test.getArea());
 
 function getTriangle(a, b, c) {
-    
-    // try {
-
-    // } catch(e) {
-    //     const trError = new Error("Треугольник с такими сторонами не существует");
-    //     throw trError; 
-    // }   
-    return new Triangle(a, b, c); 
+    try {
+        return new Triangle(a, b, c); 
+    } catch(e) {
+        return triangleError;
+    }      
 }
-
