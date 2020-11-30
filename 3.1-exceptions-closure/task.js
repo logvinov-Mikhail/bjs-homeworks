@@ -4,9 +4,9 @@ function parseCount(result) {
     let resultParse = Number.parseInt(result);
     if (isNaN(resultParse)) {
         throw numberError = new Error("Невалидное значение");
-    } else {
-        return resultParse;
-    }
+    } 
+    return resultParse;
+
 }
 
 function validateCount(count) {
@@ -26,8 +26,10 @@ class Triangle {
         this.c = c;
 
         if ((a + b) < c || (a + c) < b || (b + c) < a) { 
-            throw  new Error("Треугольник с такими сторонами не существует");
-        }
+            const triangleErr = new Error("Треугольник с такими сторонами не существует");
+            throw triangleErr;
+        } 
+    
     }
 
     getPerimeter() {
@@ -41,15 +43,21 @@ class Triangle {
     }
 }
 
-const test = new Triangle(1, 2, 100);
-console.log(test);
-console.log(test.getPerimeter());
-console.log(test.getArea());
+// const test = new Triangle(1, 2, 3);
+// console.log(test);
+// console.log(test.getPerimeter());
+// console.log(test.getArea());
 
 function getTriangle(a, b, c) {
     try {
         return new Triangle(a, b, c); 
     } catch(e) {
-         throw  new Error("Треугольник с такими сторонами не существует");;
-    }      
+        /* 
+        - В случае перехвата исключения возвращайте объект(сформировать новый объект) с двумя методами `getArea` и `getPerimeter`, 
+            которые возвращают строку: *"Ошибка! Треугольник не существует"*.
+        */
+        const test = new Triangle(a, b, c); 
+        return test.getArea();
+    }
+      
 }
