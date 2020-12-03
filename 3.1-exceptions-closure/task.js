@@ -6,7 +6,6 @@ function parseCount(result) {
         throw numberError = new Error("Невалидное значение");
     } 
     return resultParse;
-
 }
 
 function validateCount(count) {
@@ -29,7 +28,6 @@ class Triangle {
             const triangleErr = new Error("Треугольник с такими сторонами не существует");
             throw triangleErr;
         } 
-    
     }
 
     getPerimeter() {
@@ -39,7 +37,7 @@ class Triangle {
     getArea() {
         const pP = this.getPerimeter() * 0.5; //Вычисление полупериметра
         const s = Math.sqrt(pP * (pP - this.a) * (pP - this.b) * (pP - this.c)); //Вычисление площади
-        return parseInt(s.toFixed(3));
+        return +s.toFixed(3);  // return parseInt(s.toFixed(3));
     }
 }
 
@@ -52,12 +50,16 @@ function getTriangle(a, b, c) {
     try {
         return new Triangle(a, b, c); 
     } catch(e) {
-        /* 
-        - В случае перехвата исключения возвращайте объект(сформировать новый объект) с двумя методами `getArea` и `getPerimeter`, 
-            которые возвращают строку: *"Ошибка! Треугольник не существует"*.
-        */
-        const test = new Triangle(a, b, c); 
-        return test.getArea();
-    }
-      
+        // - В случае перехвата исключения возвращайте объект(сформировать новый объект) с двумя методами `getArea` и `getPerimeter`, 
+        //     которые возвращают строку: *"Ошибка! Треугольник не существует"*.
+        
+        return Obj = {
+            getArea() {
+                return 'Ошибка! Треугольник не существует'
+            }, 
+            getPerimeter() {
+                return 'Ошибка! Треугольник не существует'
+            }
+        }
+    }   
 }
